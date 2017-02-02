@@ -2,7 +2,7 @@ module.exports = function(Message) {
   // call the rest of the code and have it execute after n seconds
   console.log("App started successfully...");
 
-  Message.status = function(holdtime, cb) {
+    Message.status = function(holdtime, cb) {
 
 
    var currentDate = new Date();
@@ -12,9 +12,11 @@ module.exports = function(Message) {
 
    var response;
    if (currentHour > OPEN_HOUR && currentHour < CLOSE_HOUR) {
-     response = 'We are open for business. Process# '+process.pid+' was kept on hold for '+holdtime+'ms.';
+//     response = 'We are open for business. Process# '+process.pid+' was kept on hold for '+holdtime+'ms.';
+       response = 'We are open for business.';
    } else {
-     response = 'Sorry, we are closed. Open daily from 6am to 8pm. Process# '+process.pid+' was kept on hold for '+holdtime+'ms.';
+//     response = 'Sorry, we are closed. Open daily from 6am to 8pm. Process# '+process.pid+' was kept on hold for '+holdtime+'ms.';
+      response = 'Sorry, we are closed. Open daily from 6am to 8pm.';
    }
    console.log("requested holdtime: "+holdtime);
    function sleep(time, callback) {
