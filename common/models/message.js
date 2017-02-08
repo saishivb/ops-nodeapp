@@ -42,7 +42,17 @@ module.exports = function(Message) {
    //cb(null, response);
  };
 
-
+Message.followup = function(cb) {
+  console.log("function followup invokved...");
+  var response = "Process# "+process.pid+" from followup";
+  function active(callback) {
+    callback();
+  }
+  active(function() {
+     // executes after one second, and blocks the thread
+     cb(null, response);
+  });
+};
 
  Message.remoteMethod(
    'status', {
@@ -57,4 +67,18 @@ module.exports = function(Message) {
      }
    }
  );
+
+
+Message.remoteMethod(
+    'followup', {
+      http: {
+        path: '/followup',
+        verb: 'get'
+      },
+      returns: {
+        arg: 'status',
+        type: 'string'
+      }
+    }
+  );
 };
