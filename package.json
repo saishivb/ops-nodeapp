@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "test": "mocha"
-  },
+     "lint": "eslint .",
+     "start": "node .",
+     "posttest": "npm run lint && nsp check",
+     "test": "mocha"
+   },
   "dependencies": {
     "chai": "^3.5.0",
     "compression": "^1.0.3",
